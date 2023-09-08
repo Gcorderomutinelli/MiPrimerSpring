@@ -20,12 +20,30 @@
                 <th>Nombres</th>
                 <th>Primer Apellido</th>
                 <th>Segundo Apellido</th>
+                <th>Curso</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="alumno: ${atributoListaAlumnos}">
-                <td th:text="${alumn.id}"></td>
-
+                <td th:text="${alumno.id}"></td>
+                <td th:text="${alumno.nombres}"></td>
+                <td th:text="${alumno.apellido1}"></td>
+                <td th:text="${alumno.apellido2}"></td>
+                <td th:text="${alumno.cursoAsignado}"></td>
+                <td>
+                    <div class="row m-4">
+                        <div class="col-6">
+                            <form th:action="@{/Alumno/editar/{id}(id=${alumno.id})}" method="get">
+                                <button class="btn btn-warning" type="submit">Editar</button>
+                            </form>
+                        </div>
+                        <div class="col-6">
+                            <form th:action="@{/Alumno/eliminar/{id}(id=${alumno.id})}" method="post" onsubmit="return confirm('¿Estás seguro de que quieres eliminar este alumno?')">
+                                <button class="btn btn-danger" type="submit">Eliminar</button>
+                            </form>
+                        </div>
+                    </div>
+                </td>
             </tr>
             </tbody>
         </table>

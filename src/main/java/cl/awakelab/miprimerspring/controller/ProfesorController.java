@@ -17,7 +17,7 @@ public class ProfesorController {
     IProfesorService objProfesorService;
     @GetMapping("/crearProfesor")
     public String mostrarFormularioCrearProfesor(){
-        return "templateFormularioCrearCurso";
+        return "templateFormularioCrearProfesor";
     }
 
     @PostMapping("/crearProfesor")

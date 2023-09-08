@@ -1,7 +1,6 @@
 package cl.awakelab.miprimerspring.controller;
 
 import cl.awakelab.miprimerspring.entity.Alumno;
-import cl.awakelab.miprimerspring.entity.Usuario;
 import cl.awakelab.miprimerspring.service.IAlumnoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("Alumno")
+@RequestMapping("/Alumno")
 public class AlumnoController {
 
     @Autowired

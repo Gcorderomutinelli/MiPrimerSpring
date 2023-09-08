@@ -19,6 +19,7 @@
                 <th>Nombres</th>
                 <th>Primer Apellido</th>
                 <th>Segundo Apellido</th>
+                <th>Cursos</th>
             </tr>
             </thead>
             <tbody>
@@ -27,15 +28,16 @@
                 <td th:text="${profesor.nombres}"></td>
                 <td th:text="${profesor.apellido1}"></td>
                 <td th:text="${profesor.apellido2}"></td>
+                <td th:text="${profesor.listaCursos}"></td>
                 <td>
                 <div class="row m-4">
                     <div class="col-6">
-                        <form th:action="@{/Usuario/editar/{id}(id=${usuario.id})}" method="get">
+                        <form th:action="@{/Profesor/editar/{id}(id=${profesor.id})}" method="get">
                             <button class="btn btn-warning" type="submit">Editar</button>
                         </form>
                     </div>
                     <div class="col-6">
-                        <form th:action="@{/Usuario/eliminar/{id}(id=${usuario.id})}" method="post" onsubmit="return confirm('¿Estás seguro de que quieres eliminar este usuario?')">
+                        <form th:action="@{/Profesor/eliminar/{id}(id=${profesor.id})}" method="post" onsubmit="return confirm('¿Estás seguro de que quieres eliminar este profesor?')">
                             <button class="btn btn-danger" type="submit">Eliminar</button>
                         </form>
                     </div>
