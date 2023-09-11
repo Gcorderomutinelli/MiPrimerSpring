@@ -28,7 +28,14 @@
                 <td th:text="${profesor.nombres}"></td>
                 <td th:text="${profesor.apellido1}"></td>
                 <td th:text="${profesor.apellido2}"></td>
-                <td th:text="${profesor.listaCursos}"></td>
+                <td>
+                    <ul>
+                        <li th:each="curso: ${profesor.listaCursos}"></li>
+
+                        <!--<td th:text="${curso.nombreCurso}"></td>-->
+                    </ul>
+                </td>
+
                 <td>
                 <div class="row m-4">
                     <div class="col-6">

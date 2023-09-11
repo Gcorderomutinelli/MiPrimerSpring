@@ -3,6 +3,7 @@ package cl.awakelab.miprimerspring.service;
 
 
 import cl.awakelab.miprimerspring.entity.Alumno;
+import cl.awakelab.miprimerspring.entity.Curso;
 import cl.awakelab.miprimerspring.entity.Profesor;
 import cl.awakelab.miprimerspring.entity.Usuario;
 
@@ -21,5 +22,6 @@ public interface IProfesorService {
     public void eliminarProfesor2(Profesor profesor);
 
     public Profesor listarProfesorId(int id);
+
 
 }

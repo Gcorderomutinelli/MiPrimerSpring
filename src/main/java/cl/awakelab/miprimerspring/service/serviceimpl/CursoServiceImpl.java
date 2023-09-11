@@ -51,5 +51,10 @@ public class CursoServiceImpl implements ICursoService {
     public Curso listarCursoId(int id) {
 
         return objCursoRepo.findById(id).orElse(null);
+
     }
+
+
+
+
 }

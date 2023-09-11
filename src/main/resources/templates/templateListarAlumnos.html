@@ -20,7 +20,7 @@
                 <th>Nombres</th>
                 <th>Primer Apellido</th>
                 <th>Segundo Apellido</th>
-                <th>Curso</th>
+
             </tr>
             </thead>
             <tbody>
@@ -29,7 +29,7 @@
                 <td th:text="${alumno.nombres}"></td>
                 <td th:text="${alumno.apellido1}"></td>
                 <td th:text="${alumno.apellido2}"></td>
-                <td th:text="${alumno.cursoAsignado}"></td>
+                <td th:text="${alumno.cursoAsignado.getNombreCurso()}"></td>
                 <td>
                     <div class="row m-4">
                         <div class="col-6">

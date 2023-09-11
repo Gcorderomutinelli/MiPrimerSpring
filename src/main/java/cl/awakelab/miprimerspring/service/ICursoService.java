@@ -20,4 +20,6 @@ public interface ICursoService {
 
     public Curso listarCursoId(int idCurso);
 
+
+
 }

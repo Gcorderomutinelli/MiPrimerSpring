@@ -27,6 +27,13 @@
                     <label for="apellido2" class="form-label">Segundo Apellido</label>
                     <input type="text" class="form-control" id="apellido2" name="apellido2" required placeholder="Ingrese Segundo Apellido">
                 </div>
+                <div>
+                    <label for="Curso">Curso</label>
+                    <select class="form-control" name="cursoAsignado" id="Curso" required>
+                        <option th:each="curso :${atributoListarCursos}" th:value="${curso.id}" th:text="${curso.nombreCurso}"></option>
+
+                    </select>
+                </div>
 
         <button type="submit" class="btn btn-primary">Crear Alumno</button>
 

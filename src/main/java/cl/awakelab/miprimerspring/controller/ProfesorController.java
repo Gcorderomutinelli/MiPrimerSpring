@@ -1,7 +1,10 @@
 package cl.awakelab.miprimerspring.controller;
 
+import cl.awakelab.miprimerspring.entity.Curso;
 import cl.awakelab.miprimerspring.entity.Profesor;
+import cl.awakelab.miprimerspring.service.ICursoService;
 import cl.awakelab.miprimerspring.service.IProfesorService;
+import jakarta.persistence.criteria.CriteriaBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,8 +18,12 @@ public class ProfesorController {
 
     @Autowired
     IProfesorService objProfesorService;
+    @Autowired
+    ICursoService objCursoService;
     @GetMapping("/crearProfesor")
-    public String mostrarFormularioCrearProfesor(){
+    public String mostrarFormularioCrearProfesor(Model model){
+        List<Curso> listaCurso = objCursoService.listarCurso();
+        model.addAttribute("atributoListarCurso", listaCurso);
         return "templateFormularioCrearProfesor";
     }
 

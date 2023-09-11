@@ -1,7 +1,9 @@
 package cl.awakelab.miprimerspring.controller;
 
 import cl.awakelab.miprimerspring.entity.Alumno;
+import cl.awakelab.miprimerspring.entity.Curso;
 import cl.awakelab.miprimerspring.service.IAlumnoService;
+import cl.awakelab.miprimerspring.service.ICursoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,9 +17,13 @@ public class AlumnoController {
 
     @Autowired
     IAlumnoService objAlumnoService;
+    @Autowired
+    ICursoService objCursoService;
 
     @GetMapping("/crearAlumno")
-    public String mostrarFormularioCrearAlumno(){
+    public String mostrarFormularioCrearAlumno(Model model){
+        List<Curso> listaCurso = objCursoService.listarCurso();
+        model.addAttribute("atributoListarCursos", listaCurso);
         return "templateFormularioCrearAlumno";
     }
 
