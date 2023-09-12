@@ -28,10 +28,15 @@ public class ProfesorController {
     }
 
     @PostMapping("/crearProfesor")
-    public String crearProfesor(@ModelAttribute Profesor profesor){
+    public String crearProfesor(@ModelAttribute Profesor profesor, @RequestParam("cursoId") int cursoId) { // se le entrega el valor de curso como entero despues de la solicitud a cursoId
+        Curso cursoAsignado = objCursoService.listarCursoId(cursoId); //se busca un curso por id
+        profesor.getListaCursos().add(cursoAsignado); // se le asigna el curso al profe mediante el curso asignado de arriba
         objProfesorService.crearProfesor(profesor);
         return "redirect:/Profesor";
     }
+
+
+
 
     @GetMapping
     public String listarProfesor(Model model){

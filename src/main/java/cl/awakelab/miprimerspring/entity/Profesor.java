@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -32,5 +33,7 @@ public class Profesor {
     @JoinTable(name = "Curso_Profesor",
             joinColumns = @JoinColumn(name = "FK_Profesor", nullable = false),
         inverseJoinColumns = @JoinColumn(name = "FK_Curso", nullable = false))
-    private List<Curso> listaCursos;
+    private List<Curso> listaCursos = new ArrayList<>();
+
+
 }
