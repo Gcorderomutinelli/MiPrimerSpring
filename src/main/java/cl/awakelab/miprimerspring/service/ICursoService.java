@@ -12,6 +12,8 @@ public interface ICursoService {
 
     public Curso actualizarCurso(int id, Curso cursoActualizar);
 
+    public Curso actualizarCurso(Curso curso);
+
     public List<Curso> listarCurso();
 
     public void eliminarCurso(int id);

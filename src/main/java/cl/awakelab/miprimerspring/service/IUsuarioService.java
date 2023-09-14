@@ -9,7 +9,9 @@ public interface IUsuarioService {
 
     public Usuario crearUsuario(Usuario usuarioCreado);
 
-    public Usuario actualizarUsuario(int id, Usuario usuarioActualizar);
+    public Usuario actualizarUsuario(Usuario usuario);
+
+    Usuario actualizarUsuario(int id, Usuario usuarioActualizar);
 
     public List<Usuario> listarUsuario();
 

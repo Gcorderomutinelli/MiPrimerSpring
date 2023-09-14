@@ -28,6 +28,23 @@ public class UsuarioController {
 
     }
 
+    @PostMapping("/editar")
+    public String editarUsuario(@ModelAttribute Usuario datosParaActualizar){
+        Usuario usuario = objUsuarioService.listarUsuarioId(datosParaActualizar.getId());
+        usuario.setNombreUsuario(datosParaActualizar.getNombreUsuario());
+        usuario.setRol(datosParaActualizar.getRol());
+        usuario.setContrasena(datosParaActualizar.getContrasena());
+        objUsuarioService.actualizarUsuario(usuario);
+        return "redirect:/Usuario";
+    }
+
+    @GetMapping("editar/{id}")
+    public String editarUsuario(Model model,@PathVariable("id") int id){
+        Usuario usuario = objUsuarioService.listarUsuarioId(id);
+        model.addAttribute("usuario", usuario);
+        return "templateFormularioModificarUsuario";
+    }
+
     @GetMapping
     public String listarUsuario(Model model){
         List<Usuario> listaUsuarios = objUsuarioService.listarUsuario();

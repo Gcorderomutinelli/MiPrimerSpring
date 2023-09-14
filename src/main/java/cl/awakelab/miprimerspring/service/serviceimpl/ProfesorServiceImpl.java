@@ -7,6 +7,7 @@ import cl.awakelab.miprimerspring.service.ICursoService;
 import cl.awakelab.miprimerspring.service.IProfesorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +22,19 @@ public class ProfesorServiceImpl implements IProfesorService {
        Profesor nuevoProfesor = new Profesor();
        nuevoProfesor = objProfesorRepo.save(profesorCreado);
         return nuevoProfesor; //Manera Larga de Crear
+    }
+
+    @Override //Este es el que debo ocupar
+    public Profesor actualizarProfesor(Profesor profesorActualizar, int cursoId) {
+        List<Curso> listaCursos = new ArrayList<>();
+        listaCursos.add(objCursoRepo.listarCursoId(cursoId));
+        Profesor profesorEncontrado = objProfesorRepo.findById(profesorActualizar.getId()).orElse(null);
+        profesorEncontrado.setNombres(profesorActualizar.getNombres());
+        profesorEncontrado.setApellido1(profesorActualizar.getApellido1());
+        profesorEncontrado.setApellido2(profesorActualizar.getApellido2());
+        profesorEncontrado.setListaCursos(listaCursos);
+        return objProfesorRepo.save(profesorEncontrado);
+
     }
 
     @Override

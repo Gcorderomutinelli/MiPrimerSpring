@@ -9,6 +9,8 @@ public interface IAlumnoService {
 
     public Alumno crearAlumno(Alumno alumnoCreado);
 
+    public Alumno actualizarAlumno(Alumno alumno);
+
     public Alumno actualizarAlumno(int id, Alumno alumnoActualizar);
 
     public List<Alumno> listarAlumno();

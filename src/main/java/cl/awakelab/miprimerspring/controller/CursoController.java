@@ -1,6 +1,8 @@
 package cl.awakelab.miprimerspring.controller;
 
 import cl.awakelab.miprimerspring.entity.Curso;
+import cl.awakelab.miprimerspring.entity.Profesor;
+import cl.awakelab.miprimerspring.entity.Usuario;
 import cl.awakelab.miprimerspring.service.ICursoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,6 +28,26 @@ public class CursoController {
         objCursoService.crearCurso(curso);
         return "redirect:/Curso";
     }
+
+    @PostMapping("/editar")
+    public String editarCurso(@ModelAttribute Curso datosParaActualizar){
+        Curso curso = objCursoService.listarCursoId(datosParaActualizar.getId());
+        curso.setNombreCurso(datosParaActualizar.getNombreCurso());
+        curso.setListaProfesores(datosParaActualizar.getListaProfesores());
+        curso.setListaAlumnos(datosParaActualizar.getListaAlumnos());
+        objCursoService.actualizarCurso(curso);
+        return "redirect:/Curso";
+    }
+
+    @GetMapping("editar/{id}")
+    public String editarCurso(Model model,@PathVariable("id") int id) {
+        Curso curso = objCursoService.listarCursoId(id);
+        model.addAttribute("curso", curso);
+        return "templateFormularioModificarCurso";
+
+    }
+
+
 
     @GetMapping
     public String listarCurso(Model model){

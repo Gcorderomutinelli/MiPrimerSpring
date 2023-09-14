@@ -2,6 +2,7 @@ package cl.awakelab.miprimerspring.controller;
 
 import cl.awakelab.miprimerspring.entity.Curso;
 import cl.awakelab.miprimerspring.entity.Profesor;
+import cl.awakelab.miprimerspring.entity.Usuario;
 import cl.awakelab.miprimerspring.service.ICursoService;
 import cl.awakelab.miprimerspring.service.IProfesorService;
 import jakarta.persistence.criteria.CriteriaBuilder;
@@ -35,6 +36,25 @@ public class ProfesorController {
         return "redirect:/Profesor";
     }
 
+    @PostMapping("/editar")
+    public String editarProfesor(@ModelAttribute Profesor datosParaActualizar, @RequestParam("cursoId") int cursoId){
+        Profesor profesor = objProfesorService.listarProfesorId(datosParaActualizar.getId());
+        profesor.setNombres(datosParaActualizar.getNombres());
+        profesor.setApellido1(datosParaActualizar.getApellido1());
+        profesor.setApellido2(datosParaActualizar.getApellido2());
+        profesor.setListaCursos(datosParaActualizar.getListaCursos());
+        objProfesorService.actualizarProfesor(profesor, cursoId);
+        return "redirect:/Profesor";
+    }
+
+    @GetMapping("editar/{id}")
+    public String editarUsuario(Model model,@PathVariable("id") int id) {
+        Profesor profesor = objProfesorService.listarProfesorId(id);
+        List<Curso> listaCursos = objCursoService.listarCurso();
+        model.addAttribute("profesor", profesor);
+        model.addAttribute("atributoListarCurso", listaCursos);
+        return "templateFormularioModificarProfesor";
+    }
 
 
 

@@ -31,8 +31,8 @@ public class Profesor {
 
     @ManyToMany
     @JoinTable(name = "Curso_Profesor",
-            joinColumns = @JoinColumn(name = "FK_Profesor", nullable = false),
-        inverseJoinColumns = @JoinColumn(name = "FK_Curso", nullable = false))
+            joinColumns = @JoinColumn(name = "FK_Profesor", nullable = true),
+        inverseJoinColumns = @JoinColumn(name = "FK_Curso", nullable = true))
     private List<Curso> listaCursos = new ArrayList<>();
 
 
